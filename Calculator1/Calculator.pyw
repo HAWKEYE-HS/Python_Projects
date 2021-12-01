@@ -7,6 +7,7 @@ import lin2
 import lin
 import Determinant_2x2, Determinant_3x3, Determinant_4x4
 import Transpose
+import Base
 
 
 def factorial():
@@ -61,7 +62,8 @@ def matrix():
     Label(win, text="Operations : ", font="Butterfly 16  underline", fg="blue").pack()
     Button(win, text="Determinant", font="Georgia 14", fg="gold", bg="black", padx=15, command=deter1).pack(pady=14)
     Button(win, text="Inverse", font="Georgia 14", fg="gold", bg="black", padx=15, command=deter2).pack(pady=14)
-    Button(win, text="Transpose", font="Georgia 14", fg="gold", bg="black", padx=15, command=Transpose.ask).pack(pady=14)
+    Button(win, text="Transpose", font="Georgia 14", fg="gold", bg="black", padx=15, command=Transpose.ask).pack(
+        pady=14)
     win.grab_set()
 
 
@@ -89,9 +91,9 @@ def click(event):
         screen.update()
 
 
-nums = ['7', '8', '9', "*", "4", "5", "6", "-", "1", "2", "3", "+", "/", "0", "C", "=", "LinEqu", "!", "Mat"]
+nums = ['7', '8', '9', "*", "4", "5", "6", "-", "1", "2", "3", "+", "/", "0", "C", "=", "LinEqu", "!", "Mat", "Base-N"]
 root = Tk()
-root.geometry("500x700")
+root.geometry("600x700")
 root.configure(bg="black")
 root.title("Calculator")
 sc_value = StringVar()
@@ -133,16 +135,19 @@ for i in range(12, 16):
 
 f.pack()
 f = Frame(root, bg="black")
-for i in range(16, 19):
+for i in range(16, 20):
     if i == 16:
-        b = Button(f, text=nums[i], font="Lucida 24 bold", padx=10, bg="black", fg="white", command=lin_equ_win)
+        b = Button(f, text=nums[i], font="Lucida 24 bold", padx=10, bg="black", fg="red", command=lin_equ_win)
         b.pack(side=LEFT, padx=10, pady=10)
         b.bind("<Button-1>", click)
     elif i == 17:
         b = Button(f, text=nums[i], font="Lucida 24 bold", padx=10, bg="black", fg="white", command=factorial)
         b.pack(side=LEFT, padx=10, pady=10)
     elif i == 18:
-        b = Button(f, text=nums[i], font="Lucida 24 bold", padx=10, bg="black", fg="white", command=matrix)
+        b = Button(f, text=nums[i], font="Lucida 24 bold", padx=10, bg="black", fg="light green", command=matrix)
+        b.pack(side=LEFT, padx=10, pady=10)
+    elif i == 19:
+        b = Button(f, text=nums[i], font="Lucida 24 bold", padx=10, bg="black", fg="light blue", command=Base.main)
         b.pack(side=LEFT, padx=10, pady=10)
 f.pack()
 root.mainloop()
